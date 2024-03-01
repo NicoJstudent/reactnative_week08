@@ -1,15 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Button, TextInput, View } from 'react-native';
-import { firestore, collection, addDoc, MESSAGES } from './firebase/Config';
+import { firestore, collection, addDoc, serverTimestamp, MESSAGES } from './firebase/Config';
 
 export default function App() {
   const [newMessage, setNewMessage] = useState('')
 
   const save = async() => {
     const docRef = await addDoc(collection(firestore, MESSAGES), {
-      text: newMessage
-    })
+      text: newMessage,
+      created: serverTimestamp()
+    }).catch (error => console.log(error))
     setNewMessage('')
     console.log('Message saved.')
   }

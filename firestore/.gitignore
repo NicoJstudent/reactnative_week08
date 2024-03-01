@@ -30,11 +30,7 @@ yarn-error.*
 
 # local env files
 .env*.local
+.env
 
 # typescript
 *.tsbuildinfo
-
-# Config files
-firestore/firebase/Config.js
-firebase/Config.js
-reactnative_week08\firestore/firebase/Config.js
